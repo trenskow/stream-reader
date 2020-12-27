@@ -17,7 +17,7 @@ exports = module.exports = (stream, options = {}) => {
 			}
 		});
 
-		stream.on('end', resolve);
+		stream.on('end', () => resolve(result));
 		stream.on('error', (err) => {
 			if (!rejected) reject(err);
 		});
