@@ -1,14 +1,26 @@
 'use strict';
 
-exports = module.exports = (stream) => {
+exports = module.exports = (stream, options = {}) => {
 
 	return new Promise((resolve, reject) => {
 
-		let result = Buffer.alloc(0);
+		let rejected = false;
 
-		stream.on('data', (data) => result = Buffer.concat([result, data]));
-		stream.on('error', reject);
-		stream.on('end', () => resolve(result));
+		let result = new Buffer.alloc(0);
+
+		stream.on('data', (buffer) => {
+			if (rejected) return;
+			result = Buffer.concat([result, buffer]);
+			if (typeof options.limit === 'number' && result.length > options.limit) {
+				rejected = true;
+				reject(options.error ? options.error() : new Error('Stream length limit reached.'));
+			}
+		});
+
+		stream.on('end', resolve);
+		stream.on('error', (err) => {
+			if (!rejected) reject(err);
+		});
 
 	});
 
