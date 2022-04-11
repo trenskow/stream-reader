@@ -1,6 +1,6 @@
 {
   "name": "@trenskow/stream-reader",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A simple promise to read the content of a stream in Node.js.",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,6 @@
   ],
   "homepage": "https://github.com/trenskow/stream-reader#readme",
   "devDependencies": {
-    "eslint": "^8.2.0"
+    "eslint": "^8.13.0"
   }
 }
