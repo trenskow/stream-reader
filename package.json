@@ -1,6 +1,6 @@
 {
   "name": "@trenskow/stream-reader",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "A simple promise to read the content of a stream in Node.js.",
   "main": "index.js",
   "scripts": {
