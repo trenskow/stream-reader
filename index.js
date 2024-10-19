@@ -1,6 +1,4 @@
-'use strict';
-
-exports = module.exports = (stream, options = {}) => {
+export default (stream, options = {}) => {
 
 	return new Promise((resolve, reject) => {
 
