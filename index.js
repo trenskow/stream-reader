@@ -1,4 +1,12 @@
-export default (stream) => {
+//
+// index.js
+// @trenskow/stream-reader
+//
+// Created by Kristian Trenskow on 2025/12/21
+// See license in LICENSE.
+//
+
+export default (stream, encoding) => {
 
 	return new Promise((resolve, reject) => {
 
@@ -8,7 +16,7 @@ export default (stream) => {
 			result = Buffer.concat([result, buffer]);
 		});
 
-		stream.once('end', () => resolve(result));
+		stream.once('end', () => resolve(encoding ? result.toString(encoding) : result));
 
 		stream.once('error', (err) => {
 			reject(err);
